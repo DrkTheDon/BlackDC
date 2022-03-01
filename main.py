@@ -15,9 +15,6 @@ import os
 import itertools
 from datetime import datetime
 
-
-
-
 # Useful Defines
 def clearcmd():
     os.system('cls' if os.name == 'nt' else 'clear')

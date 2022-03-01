@@ -13,6 +13,10 @@ from colorama import Fore
 import time
 import os
 import itertools
+from datetime import datetime
+
+
+
 
 # Useful Defines
 def clearcmd():
@@ -20,7 +24,9 @@ def clearcmd():
 
 # Global Variables
 bot = discord.Client()
-TOKEN = "YOUR_TOKEN_HERE" # This is for Debugging (DEVS)
+TOKEN = "YOUR_TOKEN_HERE" # This is for Debugging/Developing
+now = datetime.now()
+curtime = now.strftime("%H:%M")
 
 # Main 
 clearcmd()
@@ -32,15 +38,18 @@ clearcmd()
 
 @bot.event
 async def on_ready():
-    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user}\n")
+    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user}                                                                  {Fore.LIGHTWHITE_EX}Press {Fore.YELLOW}CTRL + C {Fore.LIGHTWHITE_EX}to quit")
+    time.sleep(0.5)
+    print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.YELLOW}drk$help{Fore.LIGHTWHITE_EX} to start!\n\n")
+    
 
 @bot.event
 async def on_message(message):
     if message.author != bot.user:
         return
     if message.content == "drk$help":
-        await message.channel.send(f"@{message.author}This bot is under development!") 
-        print(f"{Fore.YELLOW}[*] {Fore.LIGHTWHITE_EX}Sent {Fore.YELLOW}This bot is under development!{Fore.LIGHTWHITE_EX} in {Fore.YELLOW}#{message.channel} ")
+        await message.channel.send(f"@{message.author} This bot is under development!") 
+        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.LIGHTWHITE_EX}Sent {Fore.RED}This bot is under development!{Fore.LIGHTWHITE_EX} in {Fore.YELLOW}#{message.channel} ")
 
 # Main Run
 try:

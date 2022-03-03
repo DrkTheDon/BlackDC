@@ -40,7 +40,8 @@ clearcmd()
 
 @bot.event
 async def on_ready():
-    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user}                                                                         {Fore.LIGHTWHITE_EX}Press {Fore.YELLOW}CTRL + C {Fore.LIGHTWHITE_EX}to quit")
+    print(f"{Fore.YELLOW} DrkSelfBot - V.0.3 - BETA")  
+    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user})                                                                         {Fore.LIGHTWHITE_EX}Press {Fore.YELLOW}CTRL + C {Fore.LIGHTWHITE_EX}to quit")
     time.sleep(0.5)
     print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.YELLOW}drk help{Fore.LIGHTWHITE_EX} to start!")
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")

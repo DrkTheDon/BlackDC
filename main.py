@@ -8,15 +8,14 @@
 #####################################################
 
 # Imports
-from turtle import clear
 from urllib.parse import uses_fragment
 import discord
 from colorama import Fore
 import time
 import os
-import itertools
 from datetime import datetime
 from discord.ext import commands
+import linecache
 
 # Useful Defines
 token_file_size = os.path.getsize("assets/token.txt")
@@ -33,8 +32,7 @@ def checktoken():
         print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Token Found using that one.")
         clearcmd()
 
-with open ("./assets/token.txt", 'r+') as file:
-    TOKEN_VAR = file.readlines()
+TOKEN_VAR = linecache.getline('./assets/token.txt', 2)
 TOKEN = TOKEN_VAR # This is for Debugging (DEVS)
 
 def clearcmd():
@@ -44,7 +42,7 @@ def clearcmd():
 bot = discord.Client()
 now = datetime.now()
 curtime = now.strftime("%H:%M")
-PREFIX = "drk"
+PREFIX = "bdc"
 COMMANDS = { # In development
     "help", 
 }
@@ -96,16 +94,17 @@ async def on_message(message):
 # Main Run
 try:
     bot.run(TOKEN, bot=False)
+except ModuleNotFoundError:
+    print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import errror try following the instructions in https://github.com/DrkTheDon/BlackDC")
+    time.sleep(1)
+    quit()
 except discord.errors.LoginFailure:
-    print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Inproper Token or disabled account.")
-    time.sleep(0.5)
+    print(f"{Fore.MAGENTA}TOKEN: {Fore.LIGHTWHITE_EX}{TOKEN}")
+    print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Inproper Token or disabled account.\n{Fore.YELLOW}NOTE:{Fore.LIGHTWHITE_EX} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
+    time.sleep(1.5)
     quit()
 except KeyboardInterrupt:
     print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Quitting.")
     time.sleep(0.5)
     clearcmd()
-    quit()
-except ImportError:
-    print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import errror try following the instructions in https://github.com/DrkTheDon/BlackDC")
-    time.sleep(1)
     quit()

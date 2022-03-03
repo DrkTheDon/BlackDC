@@ -27,14 +27,14 @@ bot = discord.Client()
 TOKEN = "YOUR_TOKEN_HERE" # This is for Debugging (DEVS)
 now = datetime.now()
 curtime = now.strftime("%H:%M")
-PREFIX = "drk"
+PREFIX = "bdc"
 COMMANDS = {
     "help", 
 }
 # Main 
 clearcmd()
 
-print(f"{Fore.YELLOW}[*] Starting DSB...")
+print(f"{Fore.YELLOW}[*] Starting BDC...")
 time.sleep(3.5)
 clearcmd()
 
@@ -44,7 +44,7 @@ async def on_ready():
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")
     print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user}")
     time.sleep(0.5)
-    print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.GREEN}drk help{Fore.LIGHTWHITE_EX} to start!")
+    print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.GREEN}bdc help{Fore.LIGHTWHITE_EX} to start!")
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------\n{Fore.LIGHTWHITE_EX}")
 
     

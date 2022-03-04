@@ -22,15 +22,25 @@ if [ "$(id -u)" -ne 0 ]; then
 
 fi
 clear
-echo ${BLUE}"   _____       _    _____ _______ _____ "
-echo ${BLUE}"  |  __ \     | |  |  __ \__   __|_   _|"
-echo ${BLUE}"  | |  | |_ __| | _| |__) | | |    | |  "
-echo ${BLUE}"  | |  | | '__| |/ /  ___/  | |    | |  "
-echo ${BLUE}"  | |__| | |  |   <| |      | |   _| |_ "
-echo ${BLUE}"  |_____/|_|  |_|\_\_|      |_|  |_____|"
-echo ${RED}"                 Drk's Selfbot           "                                    
+echo ${BLUE}"  ____  _____   _____ "
+echo ${BLUE}" |  _ \|  __ \ / ____|"
+echo ${BLUE}" | |_) | |  | | |     "
+echo ${BLUE}" |  _ <| |  | | |     "
+echo ${BLUE}" | |_) | |__| | |____ "
+echo ${BLUE}" |____/|_____/ \_____|"
+echo ${RED}"     Black Discord     "      
+sleep 1   
+echo ${YELLOW}"\nDependicies Installer for Black Discord. Coded by drk"                                  
 sleep 1.5
 echo "\n"
 echo "${YELLOW}[*] UPDATING SYSTEM."
-sleep 1 
 apt-get -y -qq update 
+echo "${RED}\n[*] Installing Packages\n"
+pip install discord -qq
+echo "${RED}Installed${GREEN} discord.py ${YELLOW}[1/3]"
+pip install colorama -qq
+echo "${RED}Installed${GREEN} colorama ${YELLOW}[2/3]"
+pip install datetime -qq
+echo "${RED}Installed${GREEN} datetime  ${YELLOW}[3/3]"
+
+echo "${GREEN}\nInstalled all the dependicies!"

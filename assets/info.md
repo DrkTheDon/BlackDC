@@ -1,1 +1,1 @@
-Just some pictures and stuff for the github repo here.
+Things to add here dont touch anything for your sake.

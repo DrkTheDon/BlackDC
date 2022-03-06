@@ -8,13 +8,14 @@
 #####################################################
 
 # Imports
+from logging import exception
 from urllib.parse import uses_fragment
 import discord
 from colorama import Fore
 import time
 import os
 from datetime import datetime
-from discord.ext import commands
+from discord.ext import commands, tasks
 import linecache
 import asyncio
 import requests
@@ -22,6 +23,12 @@ import numpy
 from discord.ext.commands import Bot
 from discord.utils import get
 from discord import Permissions
+from discord.ext import *
+from discord.ext.commands import bot
+from discord.ext.commands.errors import *
+from discord.ext.commands.errors import DiscordException, ClientException
+import discord.ext.commands.errors
+from discord.ext.commands.errors import CommandError, CommandNotFound
 
 # Useful Defines    
 token_file_size = os.path.getsize("assets/token.txt")
@@ -127,6 +134,14 @@ async def test(ctx):
 async def clearpm(ctx):
     if ctx.author != bot.user:
         return
+    await ctx.message.delete()
+
+@bot.command()
+async def av(ctx, member : discord.Member = None):
+  if member == None:
+    member = ctx.author
+  avatar = member.avatar_url
+  await ctx.send(f"{ctx.member.mention}'s avatar", avatar)
 
 @bot.command()
 async def delchn(ctx):
@@ -148,23 +163,35 @@ async def spam(ctx):
 while __name__ == '__main__':
     try:
         bot.run(TOKEN, bot=False)
+
+    except discord.ext.commands.errors.CommandNotFound:
+        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Command not found")
+
+    except AttributeError:
+        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Attribute error, try cheking for misspellings")
+
     except ModuleNotFoundError:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import errror try following the instructions in https://github.com/DrkTheDon/BlackDC/wiki/Installation-of-BlackDC")
         time.sleep(1)
         quit()
+
     except discord.errors.LoginFailure:
         print(f"{Fore.MAGENTA}TOKEN: {Fore.LIGHTWHITE_EX}{TOKEN}")
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Inproper Token or disabled account.\n{Fore.YELLOW}NOTE:{Fore.LIGHTWHITE_EX} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
         time.sleep(1.5)
         quit()
+
     except KeyboardInterrupt:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Quitting.")
         time.sleep(0.5)
         clearcmd()
         quit()
+
     except RuntimeError:
         clearcmd()
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} CTRL + C detected, quitting...")
         time.sleep(0.5)
         clearcmd()
         quit()
+
+        

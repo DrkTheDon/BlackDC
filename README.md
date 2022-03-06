@@ -7,5 +7,5 @@ Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **ins
 ----------------------------------------------------------------------------------------------------------------------
 *Menu Of BlackDC*
 
-
+**Info about BlackDC Recently**
 ***BlackDC*** will not be working from commands in terminal but in discord. The terminal is just for information and logging.

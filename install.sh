@@ -37,10 +37,16 @@ echo "${YELLOW}[*] UPDATING SYSTEM."
 apt-get -y -qq update 
 echo "${RED}\n[*] Installing Packages\n"
 pip install discord -qq
-echo "${RED}Installed${GREEN} discord.py ${YELLOW}[1/3]"
+echo "${RED}Installed${GREEN} discord ${YELLOW}[1/6]"
 pip install colorama -qq
-echo "${RED}Installed${GREEN} colorama ${YELLOW}[2/3]"
+echo "${RED}Installed${GREEN} colorama ${YELLOW}[2/6]"
 pip install datetime -qq
-echo "${RED}Installed${GREEN} datetime  ${YELLOW}[3/3]"
+echo "${RED}Installed${GREEN} datetime  ${YELLOW}[3/6]"
+pip install numpy -qq
+echo "${RED}Installed${GREEN} numpy  ${YELLOW}[4/6]"
+pip install requests -qq
+echo "${RED}Installed${GREEN} requests  ${YELLOW}[5/6]"
+pip install discord.py -qq
+echo "${RED}Installed${GREEN} discord.py  ${YELLOW}[6/6]\n"
 
 echo "${GREEN}\nInstalled all the dependicies!"

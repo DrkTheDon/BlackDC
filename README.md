@@ -3,4 +3,5 @@
 Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **installations** and anything else! 
 
 ## BlackDC Previews
-To add pictures and videos here
+![menu-preview](https://user-images.githubusercontent.com/74876947/156923538-699916ed-c902-4544-b066-362d4afb9489.png)
+*Menu Of BlackDC*

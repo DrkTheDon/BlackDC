@@ -29,17 +29,21 @@ from discord.ext.commands.errors import *
 from discord.ext.commands.errors import DiscordException, ClientException
 import discord.ext.commands.errors
 from discord.ext.commands.errors import CommandError, CommandNotFound
+import traceback
+import sys
+import json
 
 # Useful Defines    
 token_file_size = os.path.getsize("assets/token.txt")
-
+client = discord.Client()
+bot = commands.Bot (command_prefix="bdc ", self_bot=True, help_command=None)
 
 def checktoken():
     if token_file_size == 0:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} No local token found.")
         user_token = input(f"{Fore.YELLOW}[?] {Fore.LIGHTWHITE_EX}Enter a {Fore.GREEN}VALID{Fore.LIGHTWHITE_EX} token\n{Fore.RED}>") 
         with open("./assets/token.txt", "w+") as file:
-            file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!!\n")
+            file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!! If you want a new token then you should edit the token below!\n")
             file.write(user_token)
             file.close()
             print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Saved token in {Fore.YELLOW}./assets/token.txt{Fore.LIGHTWHITE_EX}")
@@ -47,7 +51,7 @@ def checktoken():
             clearcmd()
             print(f"{Fore.YELLOW}[*]{Fore.LIGHTWHITE_EX} New token found restart BlackDC to make change.")
             time.sleep(1)
-            entet_t_q = input(f"{Fore.YELLOW}Press enter to quit")
+            input(f"{Fore.YELLOW}Press enter to quit")
             clearcmd()
             quit()
     else:
@@ -63,13 +67,8 @@ def clearcmd():
 
 # Global Variables
 # bot = discord.Client()
-bot = commands.Bot (command_prefix="bdc ", self_bot=True, help_command=None)
 now = datetime.now()
 curtime = now.strftime("%H:%M")
-PREFIX = "bdc"
-COMMANDS = { # In development
-    "help", 
-}
 
 # Main 
 clearcmd()
@@ -95,13 +94,15 @@ clearcmd()
 @bot.event
 async def on_ready():
     print(f"{Fore.MAGENTA}BlackDC - V.0.5 - BETA")  
-    print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")
-    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Conntected to {Fore.YELLOW}{bot.user}")
     time.sleep(0.5)
+    print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")
+    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Connected to {Fore.YELLOW}{bot.user}")
     print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.GREEN}bdc help{Fore.LIGHTWHITE_EX} to start!")
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------\n{Fore.LIGHTWHITE_EX}")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="https://github.com/DrkTheDon/BlackDC"))
 
-    
+
+         
 
 @bot.command()
 async def help(ctx):
@@ -118,9 +119,6 @@ async def help(ctx):
         {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels
 
         """)
-
-        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.LIGHTWHITE_EX}Sent {Fore.RED}BlackDC Commands{Fore.LIGHTWHITE_EX} in {Fore.YELLOW}#{ctx.channel} ")
-
 @bot.command()
 async def test(ctx):
     if ctx.author != bot.user:
@@ -163,10 +161,7 @@ async def spam(ctx):
 while __name__ == '__main__':
     try:
         bot.run(TOKEN, bot=False)
-
-    except discord.ext.commands.errors.CommandNotFound:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Command not found")
-
+   
     except AttributeError:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Attribute error, try cheking for misspellings")
 
@@ -194,4 +189,8 @@ while __name__ == '__main__':
         clearcmd()
         quit()
 
+    @client.event
+    async def on_command_error(ctx, error):
+        if isinstance(error, discord.ext.commands.errors.CommandNotFound): 
+            await ctx.send("Unknown command") 
         

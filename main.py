@@ -38,6 +38,7 @@ token_file_size = os.path.getsize("assets/token.txt")
 client = discord.Client()
 bot = commands.Bot (command_prefix="bdc ", self_bot=True, help_command=None)
 
+
 def checktoken():
     if token_file_size == 0:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} No local token found.")
@@ -55,11 +56,28 @@ def checktoken():
             clearcmd()
             quit()
     else:
-        print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Token Found using that one.")
-        clearcmd()
+        print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Token Found: {Fore.YELLOW}{TOKEN}{Fore.LIGHTWHITE_EX}")
+        change_yn = input(f"Do you want to change the token? (y/n)\n{Fore.RED}>")
+        if change_yn == "y":
+            tokench = input(f"Desired token?\n{Fore.RED}>")
+            with open("./assets/token.txt", "w+") as file:
+                file.truncate(0)
+                file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!! If you want a new token then you should edit the token below!\n")
+                file.write(TOKEN)
+                file.close()
+                clearcmd()
+                print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Set token as: {Fore.YELLOW} {tokench}")
+        elif change_yn == "n":
+            clearcmd()
+            pass
+        else:
+            print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Did not recognize your input. Continuing with the found token.")
+            time.sleep(2)
+            clearcmd()
 
 TOKEN_VAR = linecache.getline('./assets/token.txt', 2)
-TOKEN = TOKEN_VAR 
+TOKEN = TOKEN_VAR              
+
 
 
 def clearcmd():
@@ -114,9 +132,11 @@ async def help(ctx):
         print(f"""
         {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot
         {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message
+        {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people
         {Fore.YELLOW}clearpm{Fore.LIGHTWHITE_EX} - clears all of your messages
         {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server
         {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels
+        
 
         """)
 @bot.command()

@@ -133,10 +133,8 @@ async def help(ctx):
         {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot
         {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message
         {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people
-        {Fore.YELLOW}clearpm{Fore.LIGHTWHITE_EX} - clears all of your messages
         {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server
         {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels
-        
 
         """)
 @bot.command()
@@ -165,6 +163,10 @@ async def av(ctx, member : discord.Member = None):
 async def delchn(ctx):
     if ctx.author != bot.user:
         return
+    for chn in ctx.guild.channels:
+        await chn.delete()
+        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Deleted Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {chn}{Fore.LIGHTWHITE_EX}")
+    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[*] {Fore.RED}Deleted All Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {ctx.guild}{Fore.LIGHTWHITE_EX}")
 
 @bot.command()
 async def crechn(ctx):

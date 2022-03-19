@@ -36,7 +36,8 @@ import json
 # Useful Defines    
 token_file_size = os.path.getsize("assets/token.txt")
 client = discord.Client()
-bot = commands.Bot (command_prefix="bdc ", self_bot=True, help_command=None)
+activity = discord.Activity(type=discord.ActivityType.watching, name="https://github.com/DrkTheDon")
+bot = commands.Bot (command_prefix="bdc ", self_bot=True,  help_command=None, activity=activity)
 
 
 def checktoken():
@@ -117,8 +118,7 @@ async def on_ready():
     print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Connected to {Fore.YELLOW}{bot.user}")
     print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.GREEN}bdc help{Fore.LIGHTWHITE_EX} to start!")
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------\n{Fore.LIGHTWHITE_EX}")
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="https://github.com/DrkTheDon/BlackDC"))
-
+    
 
          
 
@@ -184,9 +184,12 @@ async def spam(ctx, *, message):
             
 
 @bot.command()
-async def ghostping(ctx):
+async def ghostping(ctx, amount:int, *, message):
     if ctx.author != bot.user:
         return
+    for i in range(amount):
+        await ctx.send(message, delete_after=0.01)
+    
 
 # Main Run
 while __name__ == '__main__':

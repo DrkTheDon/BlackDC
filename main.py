@@ -112,7 +112,7 @@ clearcmd()
 
 @bot.event
 async def on_ready():
-    print(f"{Fore.MAGENTA}BlackDC - V.0.5 - BETA")  
+    print(f"{Fore.MAGENTA}BlackDC - V.0.6 - BETA")  
     time.sleep(0.5)
     print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")
     print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Connected to {Fore.YELLOW}{bot.user}")

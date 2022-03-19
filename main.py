@@ -130,11 +130,11 @@ async def help(ctx):
         await ctx.message.delete()
         print(f"{Fore.GREEN}COMMANDS:")
         print(f"""
-        {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot
-        {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message
-        {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people
-        {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server
-        {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels
+        {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot -
+        {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message -{Fore.YELLOW} bdc spam <amount> <message> 
+        {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people -{Fore.YELLOW} bdc ghostping <amount> <user>
+        {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server -{Fore.YELLOW} bdc delchn
+        {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels -{Fore.YELLOW} bdc spam <amount> <channelname>
 
         """)
 @bot.command()
@@ -169,9 +169,15 @@ async def delchn(ctx):
     print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[*] {Fore.RED}Deleted All Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {ctx.guild}{Fore.LIGHTWHITE_EX}")
 
 @bot.command()
-async def crechn(ctx):
+async def crechn(ctx, amount:int, *, name):
     if ctx.author != bot.user:
         return
+    guild = ctx.message.guild
+    for chn in range(amount):
+        await guild.create_text_channel(f'{name}-{chn}')
+        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Created Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {name}-{chn}{Fore.LIGHTWHITE_EX} In {Fore.YELLOW}{guild}")
+    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[*] {Fore.RED}Created {amount} Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
+
 
 @bot.command()
 async def spam(ctx, *, message):
@@ -200,13 +206,13 @@ while __name__ == '__main__':
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Attribute error, try cheking for misspellings")
 
     except ModuleNotFoundError:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import errror try following the instructions in https://github.com/DrkTheDon/BlackDC/wiki/Installation-of-BlackDC")
+        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import error try following the instructions in https://github.com/DrkTheDon/BlackDC/wiki/Installation-of-BlackDC")
         time.sleep(1)
         quit()
 
     except discord.errors.LoginFailure:
         print(f"{Fore.MAGENTA}TOKEN: {Fore.LIGHTWHITE_EX}{TOKEN}")
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Inproper Token or disabled account.\n{Fore.YELLOW}NOTE:{Fore.LIGHTWHITE_EX} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
+        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Improper Token or disabled account.\n{Fore.YELLOW}NOTE:{Fore.LIGHTWHITE_EX} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
         time.sleep(1.5)
         quit()
 

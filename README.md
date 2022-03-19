@@ -1,7 +1,7 @@
 # OPENED AGAIN 
 BlackDC is open again and a will continue coding while slow but surely, I'm learning another language.
 # BlackDC Information
-## WIKI
+## INSTALLATION/WIKI
 Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **installations** and anything else! 
 
 ## BlackDC Previews

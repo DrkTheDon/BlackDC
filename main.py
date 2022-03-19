@@ -174,10 +174,19 @@ async def crechn(ctx):
         return
 
 @bot.command()
-async def spam(ctx):
+async def spam(ctx, *, message):
     if ctx.author != bot.user:
         return
+    for i in range(100000):
+        await ctx.send(message)
+        if message == "stop":
+            return
+            
 
+@bot.command()
+async def ghostping(ctx):
+    if ctx.author != bot.user:
+        return
 
 # Main Run
 while __name__ == '__main__':

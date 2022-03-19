@@ -36,7 +36,7 @@ import json
 # Useful Defines    
 token_file_size = os.path.getsize("assets/token.txt")
 client = discord.Client()
-activity = discord.Activity(type=discord.ActivityType.watching, name="https://github.com/DrkTheDon")
+activity = discord.Activity(type=discord.ActivityType.playing, name="BlackDC")
 bot = commands.Bot (command_prefix="bdc ", self_bot=True,  help_command=None, activity=activity)
 
 

@@ -9,5 +9,9 @@ Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **ins
 ----------------------------------------------------------------------------------------------------------------------
 *Menu Of BlackDC*
 
+![preview2](https://user-images.githubusercontent.com/74876947/159160868-e2bd5fac-67b6-46fd-93ed-eb68eee2dcf0.png)
+*Logging in the terminal*
+
+
 ## Info about BlackDC (Recent)
 ***BlackDC*** will not be working from commands in terminal but in discord. The terminal is just for information and logging.

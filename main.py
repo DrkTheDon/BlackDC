@@ -163,26 +163,29 @@ async def av(ctx, member : discord.Member = None):
 async def delchn(ctx):
     if ctx.author != bot.user:
         return
+    await ctx.message.delete()
     for chn in ctx.guild.channels:
         await chn.delete()
         print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Deleted Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {chn}{Fore.LIGHTWHITE_EX}")
-    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[*] {Fore.RED}Deleted All Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {ctx.guild}{Fore.LIGHTWHITE_EX}")
+    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.RED}Deleted All Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {ctx.guild}{Fore.LIGHTWHITE_EX}")
 
 @bot.command()
 async def crechn(ctx, amount:int, *, name):
     if ctx.author != bot.user:
         return
+    await ctx.message.delete()
     guild = ctx.message.guild
     for chn in range(amount):
         await guild.create_text_channel(f'{name}-{chn}')
         print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Created Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {name}-{chn}{Fore.LIGHTWHITE_EX} In {Fore.YELLOW}{guild}")
-    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[*] {Fore.RED}Created {amount} Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
+    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.RED}Created {amount} Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
 
 
 @bot.command()
 async def spam(ctx, *, message):
     if ctx.author != bot.user:
         return
+    await ctx.message.delete()
     for i in range(100000):
         await ctx.send(message)
         if message == "stop":

@@ -7,7 +7,7 @@
 ## NOTE: This will install all the dependicies     ##
 #####################################################
 
-# Global Variables
+# Variables
 RED="\033[0;31m"
 YELLOW="\033[0;33m"
 GREEN="\033[0;32m"
@@ -35,18 +35,19 @@ sleep 1.5
 echo "\n"
 echo "${YELLOW}[*] UPDATING SYSTEM."
 apt-get -y -qq update 
+echo "${RED}\n[*] CDing to ./BlackDC"
+cd ..
 echo "${RED}\n[*] Installing Packages\n"
-pip install discord -qq
 echo "${RED}Installed${GREEN} discord ${YELLOW}[1/6]"
-pip install colorama -qq
+pip install -r requirements.txt -q
 echo "${RED}Installed${GREEN} colorama ${YELLOW}[2/6]"
-pip install datetime -qq
+pip install -r requirements.txt -q 
 echo "${RED}Installed${GREEN} datetime  ${YELLOW}[3/6]"
-pip install numpy -qq
+pip install -r requirements.txt -q
 echo "${RED}Installed${GREEN} numpy  ${YELLOW}[4/6]"
-pip install requests -qq
+pip install -r requirements.txt -q
 echo "${RED}Installed${GREEN} requests  ${YELLOW}[5/6]"
-pip install discord.py -qq
+pip install -r requirements.txt -q
 echo "${RED}Installed${GREEN} discord.py  ${YELLOW}[6/6]\n"
 
 echo "${GREEN}\nInstalled all the dependicies!"

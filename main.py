@@ -34,7 +34,7 @@ import sys
 import json
 
 # Useful Defines    
-token_file_size = os.path.getsize("assets/token.txt")
+token_file_size = os.stat("./assets/token.txt").st_size
 client = discord.Client()
 activity = discord.Activity(type=discord.ActivityType.playing, name="BlackDC")
 bot = commands.Bot (command_prefix="bdc ", self_bot=True,  help_command=None, activity=activity)
@@ -62,12 +62,18 @@ def checktoken():
         if change_yn == "y":
             tokench = input(f"Desired token?\n{Fore.RED}>")
             with open("./assets/token.txt", "w+") as file:
-                file.truncate(0)
                 file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!! If you want a new token then you should edit the token below!\n")
-                file.write(TOKEN)
+                file.write(tokench)
                 file.close()
                 clearcmd()
                 print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Set token as: {Fore.YELLOW} {tokench}")
+                time.sleep(1)
+                clearcmd()
+                print(f"{Fore.YELLOW}[*]{Fore.LIGHTWHITE_EX} New token found restart BlackDC to make change.")
+                time.sleep(1)
+                input(f"{Fore.YELLOW}Press enter to quit")
+                clearcmd()
+                quit()
         elif change_yn == "n":
             clearcmd()
             pass

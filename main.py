@@ -140,7 +140,7 @@ async def help(ctx):
         {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message -{Fore.YELLOW} bdc spam <amount> <message> 
         {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people -{Fore.YELLOW} bdc ghostping <amount> <user>
         {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server -{Fore.YELLOW} bdc delchn
-        {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels -{Fore.YELLOW} bdc spam <amount> <channelname>
+        {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels -{Fore.YELLOW} bdc crechn <amount> <channelname>
 
         """)
 @bot.command()
@@ -203,8 +203,11 @@ async def spam(ctx, *, message):
 async def ghostping(ctx, amount:int, *, message):
     if ctx.author != bot.user:
         return
+    await ctx.message.delete()
     for i in range(amount):
-        await ctx.send(message, delete_after=0.01)
+        await ctx.send(message, delete_after=0.1)
+        await asyncio.sleep(5.0)
+
     
 
 # Main Run

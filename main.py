@@ -146,7 +146,7 @@ async def help(ctx):
 @bot.command()
 async def test(ctx):
     if ctx.author != bot.user:
-        return
+        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[!] {Fore.LIGHTWHITE_EX}Ignored command from{Fore.RED} {ctx.author} {Fore.LIGHTWHITE_EX}In {Fore.YELLOW}#{ctx.channel} ")
     await ctx.message.delete()
     await ctx.send(f"{ctx.author.mention} BlackDC is working!", delete_after=1.5)
     print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.LIGHTWHITE_EX}BlackDC is {Fore.RED}Working{Fore.LIGHTWHITE_EX} sent in {Fore.YELLOW}#{ctx.channel} ")

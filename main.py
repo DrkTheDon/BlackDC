@@ -137,7 +137,7 @@ async def help(ctx):
         await ctx.message.delete()
         print(f"{Colors.green}COMMANDS:")
         print(f"""
-        {Colors.yellow}test{Colors.white} - tests the bot -
+        {Colors.yellow}test{Colors.white} - tests the bot -{Colors.yellow} bdc test 
         {Colors.yellow}spam{Colors.white} - spams a certain message -{Colors.yellow} bdc spam <amount> <message> {Colors.red} UNDER DEVELOPMENT!
         {Colors.yellow}ghostping{Colors.white} - Ghostspings people -{Colors.yellow} bdc ghostping <amount> <user>
         {Colors.yellow}delchn{Colors.white} - deletes all channels in server -{Colors.yellow} bdc delchn

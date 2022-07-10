@@ -145,11 +145,11 @@ async def help(ctx):
         {Colors.yellow}ghostping{Colors.white} - Ghostspings people -{Colors.yellow} bdc ghostping <amount> <user>
         {Colors.yellow}delchn{Colors.white} - deletes all channels in server -{Colors.yellow} bdc delchn
         {Colors.yellow}crechn{Colors.white} - creates alot of channels -{Colors.yellow} bdc crechn <amount> <channelname>
-        {Colors.yellow}serverinfo{Colors.white} - displays info about the server-{Colors.yellow} bdc serverinfo
-
-
+        {Colors.yellow}serverinfo{Colors.white} - displays info about the server-{Colors.yellow} bdc serverinfo {Colors.red} UNDER DEVELOPMENT!
+        {Colors.yellow}clearcmd{Colors.white} - clears the cmd/terminal -{Colors.yellow} bdc clearcmd {Colors.red} UNDER DEVELOPMENT!
 
         """)
+    
 @bot.command()
 async def test(ctx):
     if ctx.author != bot.user:
@@ -166,6 +166,21 @@ async def clearpm(ctx):
         return
     await ctx.message.delete()
 
+@bot.command()
+async def clearcmd(ctx):
+    if ctx.author != bot.user:
+        return
+    await ctx.message.delete()
+    await ctx.send(f"{ctx.author.mention} Making the terminal clean!", delete_after=0.5)
+    clearcmd()
+    print(f"{Colors.purple}BlackDC - V.0.7 - BETA ACCESS")  
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------{Colors.white}")
+    print(f"{Colors.green}[+]{Colors.white} Loaded {Colors.red}BlackDC V.0.7{Colors.white} by {Colors.green}drk#1337")
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------{Colors.white}")
+    print(f"{Colors.green}[+]{Colors.white} Connected to {Colors.yellow}{bot.user}")
+    print(f"{Colors.yellow}[!]{Colors.white} Send {Colors.green}bdc help{Colors.white} In Discord to start!")
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------\n{Colors.white}")
+    
 @bot.command()
 async def av(ctx, member : discord.Member = None):
   if member == None:
@@ -205,6 +220,16 @@ async def spam(ctx, *, message):
         if message == "stop":
             return
             
+@bot.command()
+async def serverinfo(ctx):
+    if ctx.author != bot.user:
+        return
+    await ctx.message.delete()
+    guild = ctx.message.guild
+    for member in guild.members:
+        print(member)
+
+    
 
 @bot.command()
 async def ghostping(ctx, amount:int, *, message):

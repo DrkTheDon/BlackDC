@@ -41,7 +41,7 @@ bot = commands.Bot (command_prefix="bdc ", self_bot=True,  help_command=None, ac
 
 
 def checktoken():
-    if token_file_size == 0:
+    if token_file_size == 1:
         print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} No local token found.")
         user_token = input(f"{Fore.YELLOW}[?] {Fore.LIGHTWHITE_EX}Enter a {Fore.GREEN}VALID{Fore.LIGHTWHITE_EX} token\n{Fore.RED}>") 
         with open("./assets/token.txt", "w+") as file:
@@ -137,10 +137,13 @@ async def help(ctx):
         print(f"{Fore.GREEN}COMMANDS:")
         print(f"""
         {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot -
-        {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message -{Fore.YELLOW} bdc spam <amount> <message> 
+        {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message -{Fore.YELLOW} bdc spam <amount> <message> {Fore.RED} UNDER DEVELOPMENT!
         {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people -{Fore.YELLOW} bdc ghostping <amount> <user>
         {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server -{Fore.YELLOW} bdc delchn
         {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels -{Fore.YELLOW} bdc crechn <amount> <channelname>
+        {Fore.YELLOW}serverinfo{Fore.LIGHTWHITE_EX} - displays info about the server-{Fore.YELLOW} bdc serverinfo
+
+
 
         """)
 @bot.command()

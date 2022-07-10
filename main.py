@@ -11,7 +11,8 @@
 from logging import exception
 from urllib.parse import uses_fragment
 import discord
-from colorama import Fore
+from colorama import Fore # OLD LIB 
+from pystyle import Colorate, Colors # NEW LIB
 import time
 import os
 from datetime import datetime
@@ -42,43 +43,43 @@ bot = commands.Bot (command_prefix="bdc ", self_bot=True,  help_command=None, ac
 
 def checktoken():
     if token_file_size == 1:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} No local token found.")
-        user_token = input(f"{Fore.YELLOW}[?] {Fore.LIGHTWHITE_EX}Enter a {Fore.GREEN}VALID{Fore.LIGHTWHITE_EX} token\n{Fore.RED}>") 
+        print(f"{Colors.red}[-]{Colors.white} No local token found.")
+        user_token = input(f"{Colors.yellow}[?] {Colors.white}Enter a {Colors.green}VALID{Colors.white} token\n{Colors.red}>") 
         with open("./assets/token.txt", "w+") as file:
             file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!! If you want a new token then you should edit the token below!\n")
             file.write(user_token)
             file.close()
-            print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Saved token in {Fore.YELLOW}./assets/token.txt{Fore.LIGHTWHITE_EX}")
+            print(f"{Colors.green}[+]{Colors.white} Saved token in {Colors.yellow}./assets/token.txt{Colors.white}")
             time.sleep(1.5)
             clearcmd()
-            print(f"{Fore.YELLOW}[*]{Fore.LIGHTWHITE_EX} New token found restart BlackDC to make change.")
+            print(f"{Colors.yellow}[*]{Colors.white} New token found restart BlackDC to make change.")
             time.sleep(1)
-            input(f"{Fore.YELLOW}Press enter to quit")
+            input(f"{Colors.yellow}Press enter to quit")
             clearcmd()
             quit()
     else:
-        print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Token Found: {Fore.YELLOW}{TOKEN}{Fore.LIGHTWHITE_EX}")
-        change_yn = input(f"Do you want to change the token? (y/n)\n{Fore.RED}>")
-        if change_yn == "y":
-            tokench = input(f"Desired token?\n{Fore.RED}>")
+        print(f"{Colors.green}[+]{Colors.white} Token Found: {Colors.yellow}{TOKEN}{Colors.white}")
+        change_yn = input(f"{Colors.yellow}[?]{Colors.white} Is this the correct token? (y/n)\n{Colors.red}>")
+        if change_yn == "n":
+            tokench = input(f"Desired new token?\n{Colors.red}>")
             with open("./assets/token.txt", "w+") as file:
                 file.write("## DO NOT CHANGE ANY OF THIS OTHERWISE BlackDC WILL NOT WORK PROPERLY!!! If you want a new token then you should edit the token below!\n")
                 file.write(tokench)
                 file.close()
                 clearcmd()
-                print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Set token as: {Fore.YELLOW} {tokench}")
+                print(f"{Colors.green}[+]{Colors.white} Set token as: {Colors.yellow} {tokench}")
                 time.sleep(1)
                 clearcmd()
-                print(f"{Fore.YELLOW}[*]{Fore.LIGHTWHITE_EX} New token found restart BlackDC to make change.")
+                print(f"{Colors.yellow}[*]{Colors.white} New token found restart BlackDC to make change.")
                 time.sleep(1)
-                input(f"{Fore.YELLOW}Press enter to quit")
+                input(f"{Colors.yellow}Press enter to quit")
                 clearcmd()
                 quit()
-        elif change_yn == "n":
+        elif change_yn == "y":
             clearcmd()
             pass
         else:
-            print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Did not recognize your input. Continuing with the found token.")
+            print(f"{Colors.red}[-]{Colors.white} Did not recognize your input. Continuing with the found token.")
             time.sleep(2)
             clearcmd()
 
@@ -98,12 +99,12 @@ curtime = now.strftime("%H:%M")
 # Main 
 clearcmd()
 
-print(f"{Fore.YELLOW}[*] Starting BDC...")
+print(f"{Colors.yellow}[*] Starting BDC...")
 time.sleep(1.5)
 clearcmd()
 checktoken()
 print(f"""
-                        {Fore.RED}LICENSE AGREEMNT\n{Fore.LIGHTWHITE_EX}
+                        {Colors.red}LICENSE AGREEMNT\n{Colors.white}
                     GNU GENERAL PUBLIC LICENSE
                     Version 3, 29 June 2007
 
@@ -111,19 +112,19 @@ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it and removing credits is not allowed.
 
-{Fore.YELLOW}https://github.com/DrkTheDon/BlackDC/blob/main/LICENSE
+{Colors.yellow}https://github.com/DrkTheDon/BlackDC/blob/main/LICENSE
 """)
 time.sleep(3.3)
 clearcmd()
 
 @bot.event
 async def on_ready():
-    print(f"{Fore.MAGENTA}BlackDC - V.0.6 - BETA")  
+    print(f"{Colors.purple}BlackDC - V.0.6 - BETA")  
     time.sleep(0.5)
-    print(f"{Fore.YELLOW}----------------------------------------------------------------------------------{Fore.LIGHTWHITE_EX}")
-    print(f"{Fore.GREEN}[+]{Fore.LIGHTWHITE_EX} Connected to {Fore.YELLOW}{bot.user}")
-    print(f"{Fore.YELLOW}[!]{Fore.LIGHTWHITE_EX} Send {Fore.GREEN}bdc help{Fore.LIGHTWHITE_EX} In Discord to start!")
-    print(f"{Fore.YELLOW}----------------------------------------------------------------------------------\n{Fore.LIGHTWHITE_EX}")
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------{Colors.white}")
+    print(f"{Colors.green}[+]{Colors.white} Connected to {Colors.yellow}{bot.user}")
+    print(f"{Colors.yellow}[!]{Colors.white} Send {Colors.green}bdc help{Colors.white} In Discord to start!")
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------\n{Colors.white}")
     
 
          
@@ -134,14 +135,14 @@ async def help(ctx):
         return
     else:
         await ctx.message.delete()
-        print(f"{Fore.GREEN}COMMANDS:")
+        print(f"{Colors.green}COMMANDS:")
         print(f"""
-        {Fore.YELLOW}test{Fore.LIGHTWHITE_EX} - tests the bot -
-        {Fore.YELLOW}spam{Fore.LIGHTWHITE_EX} - spams a certain message -{Fore.YELLOW} bdc spam <amount> <message> {Fore.RED} UNDER DEVELOPMENT!
-        {Fore.YELLOW}ghostping{Fore.LIGHTWHITE_EX} - Ghostspings people -{Fore.YELLOW} bdc ghostping <amount> <user>
-        {Fore.YELLOW}delchn{Fore.LIGHTWHITE_EX} - deletes all channels in server -{Fore.YELLOW} bdc delchn
-        {Fore.YELLOW}crechn{Fore.LIGHTWHITE_EX} - creates alot of channels -{Fore.YELLOW} bdc crechn <amount> <channelname>
-        {Fore.YELLOW}serverinfo{Fore.LIGHTWHITE_EX} - displays info about the server-{Fore.YELLOW} bdc serverinfo
+        {Colors.yellow}test{Colors.white} - tests the bot -
+        {Colors.yellow}spam{Colors.white} - spams a certain message -{Colors.yellow} bdc spam <amount> <message> {Colors.red} UNDER DEVELOPMENT!
+        {Colors.yellow}ghostping{Colors.white} - Ghostspings people -{Colors.yellow} bdc ghostping <amount> <user>
+        {Colors.yellow}delchn{Colors.white} - deletes all channels in server -{Colors.yellow} bdc delchn
+        {Colors.yellow}crechn{Colors.white} - creates alot of channels -{Colors.yellow} bdc crechn <amount> <channelname>
+        {Colors.yellow}serverinfo{Colors.white} - displays info about the server-{Colors.yellow} bdc serverinfo
 
 
 
@@ -149,11 +150,11 @@ async def help(ctx):
 @bot.command()
 async def test(ctx):
     if ctx.author != bot.user:
-        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[!] {Fore.LIGHTWHITE_EX}Ignored command from{Fore.RED} {ctx.author} {Fore.LIGHTWHITE_EX}In {Fore.YELLOW}#{ctx.channel} ")
+        print(f"{Colors.blue}{curtime} {Colors.yellow}[!] {Colors.white}Ignored command from{Colors.red} {ctx.author} {Colors.white}In {Colors.yellow}#{ctx.channel} ")
         return
     await ctx.message.delete()
     await ctx.send(f"{ctx.author.mention} BlackDC is working!", delete_after=1.5)
-    print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.LIGHTWHITE_EX}BlackDC is {Fore.RED}Working{Fore.LIGHTWHITE_EX} sent in {Fore.YELLOW}#{ctx.channel} ")
+    print(f"{Colors.blue}{curtime} {Colors.yellow}[*] {Colors.white}BlackDC is {Colors.red}Working{Colors.white} sent in {Colors.yellow}#{ctx.channel} ")
 
 
 @bot.command()
@@ -176,8 +177,8 @@ async def delchn(ctx):
     await ctx.message.delete()
     for chn in ctx.guild.channels:
         await chn.delete()
-        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Deleted Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {chn}{Fore.LIGHTWHITE_EX}")
-    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.RED}Deleted All Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {ctx.guild}{Fore.LIGHTWHITE_EX}")
+        print(f"{Colors.blue}{curtime} {Colors.yellow}[*] {Colors.red}Deleted Channel{Colors.white}{Colors.yellow} {chn}{Colors.white}")
+    print(f"{Colors.blue}{curtime} {Colors.green}[+] {Colors.red}Deleted All Channels in{Colors.white}{Colors.yellow} {ctx.guild}{Colors.white}")
 
 @bot.command()
 async def crechn(ctx, amount:int, *, name):
@@ -187,8 +188,8 @@ async def crechn(ctx, amount:int, *, name):
     guild = ctx.message.guild
     for chn in range(amount):
         await guild.create_text_channel(f'{name}-{chn}')
-        print(f"{Fore.BLUE}{curtime} {Fore.YELLOW}[*] {Fore.RED}Created Channel{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {name}-{chn}{Fore.LIGHTWHITE_EX} In {Fore.YELLOW}{guild}")
-    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.RED}Created {amount} Channels in{Fore.LIGHTWHITE_EX}{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
+        print(f"{Colors.blue}{curtime} {Colors.yellow}[*] {Colors.red}Created Channel{Colors.white}{Colors.yellow} {name}-{chn}{Colors.white} In {Colors.yellow}{guild}")
+    print(f"{Colors.blue}{curtime} {Colors.green}[+] {Colors.red}Created {amount} Channels in{Colors.white}{Colors.yellow} {guild}{Colors.white}")
 
 
 @bot.command()
@@ -211,7 +212,7 @@ async def ghostping(ctx, amount:int, *, message):
     for i in range(amount):
         await ctx.send(message, delete_after=0.1)
         await asyncio.sleep(5.0)
-    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.GREEN}Succsessfully {Fore.RED}Ghostpinged {message} {Fore.YELLOW}{amount} times {Fore.LIGHTWHITE_EX}in{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
+    print(f"{Colors.blue}{curtime} {Colors.green}[+] {Colors.green}Succsessfully {Colors.red}Ghostpinged {message} {Colors.yellow}{amount} times {Colors.white}in{Colors.yellow} {guild}{Colors.white}")
 
     
 
@@ -221,28 +222,28 @@ while __name__ == '__main__':
         bot.run(TOKEN, bot=False)
    
     except AttributeError:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Attribute error, try cheking for misspellings")
+        print(f"{Colors.red}[-]{Colors.white} Attribute error, try cheking for misspellings")
 
     except ModuleNotFoundError:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Got An import error try following the instructions in https://github.com/DrkTheDon/BlackDC/wiki/Installation-of-BlackDC")
+        print(f"{Colors.red}[-]{Colors.white} Got An import error try following the instructions in https://github.com/DrkTheDon/BlackDC/wiki/Installation-of-BlackDC")
         time.sleep(1)
         quit()
 
     except discord.errors.LoginFailure:
-        print(f"{Fore.MAGENTA}TOKEN: {Fore.LIGHTWHITE_EX}{TOKEN}")
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Improper Token or disabled account.\n{Fore.YELLOW}NOTE:{Fore.LIGHTWHITE_EX} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
+        print(f"{Colors.purple}TOKEN: {Colors.white}{TOKEN}")
+        print(f"{Colors.red}[-]{Colors.white} Improper Token or disabled account.\n{Colors.yellow}NOTE:{Colors.white} If you have any quotes like \" or \' then remove them from your token in ./assets/token.txt")
         time.sleep(1.5)
         quit()
 
     except KeyboardInterrupt:
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} Quitting.")
+        print(f"{Colors.red}[-]{Colors.white} Quitting.")
         time.sleep(0.5)
         clearcmd()
         quit()
 
     except RuntimeError:
         clearcmd()
-        print(f"{Fore.RED}[-]{Fore.LIGHTWHITE_EX} CTRL + C detected, quitting...")
+        print(f"{Colors.red}[-]{Colors.white} CTRL + C detected, quitting...")
         time.sleep(0.5)
         clearcmd()
         quit()

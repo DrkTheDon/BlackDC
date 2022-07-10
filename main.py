@@ -119,7 +119,10 @@ clearcmd()
 
 @bot.event
 async def on_ready():
-    print(f"{Colors.purple}BlackDC - V.0.6 - BETA")  
+    print(f"{Colors.purple}BlackDC - V.0.7 - BETA ACCESS")  
+    time.sleep(0.5)
+    print(f"{Colors.yellow}----------------------------------------------------------------------------------{Colors.white}")
+    print(f"{Colors.green}[+]{Colors.white} Loaded {Colors.red}BlackDC V.0.7{Colors.white} by {Colors.green}drk#1337")
     time.sleep(0.5)
     print(f"{Colors.yellow}----------------------------------------------------------------------------------{Colors.white}")
     print(f"{Colors.green}[+]{Colors.white} Connected to {Colors.yellow}{bot.user}")

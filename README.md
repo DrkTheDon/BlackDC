@@ -1,4 +1,4 @@
-# DISCONTINUED 
+# BlackDC IS OPENED AGAIN!
 
 ## INSTALLATION/WIKI
 Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **installations** and anything else! 

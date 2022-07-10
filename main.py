@@ -3,7 +3,7 @@
 #####################################################
 ## Black Discord (BlackDC)                         ##
 ## A discord Selfbot.                              ##
-## https://voidsecurity.ml                         ##
+## https://drkbro.ml/                              ##
 ## Coded by: drk                                   ##
 #####################################################
 
@@ -203,10 +203,12 @@ async def spam(ctx, *, message):
 async def ghostping(ctx, amount:int, *, message):
     if ctx.author != bot.user:
         return
+    guild = ctx.message.guild
     await ctx.message.delete()
     for i in range(amount):
         await ctx.send(message, delete_after=0.1)
         await asyncio.sleep(5.0)
+    print(f"{Fore.BLUE}{curtime} {Fore.GREEN}[+] {Fore.GREEN}Succsessfully {Fore.RED}Ghostpinged {message} {Fore.YELLOW}{amount} times {Fore.LIGHTWHITE_EX}in{Fore.YELLOW} {guild}{Fore.LIGHTWHITE_EX}")
 
     
 

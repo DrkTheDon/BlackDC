@@ -229,7 +229,18 @@ async def serverinfo(ctx):
     for member in guild.members:
         print(member)
 
-    
+
+@bot.command()
+async def massban(ctx):
+    guild = ctx.message.guild
+    if ctx.author != bot.user:
+        return
+    for user in ctx.guild.members:
+        try:
+            await user.ban()
+            print(f"{Colors.blue}{curtime} {Colors.green}[+] {Colors.green}Succsessfully {Colors.red}Banned {user}{Colors.white}in{Colors.yellow} {guild}{Colors.white}")
+        except:
+            pass
 
 @bot.command()
 async def ghostping(ctx, amount:int, *, message):

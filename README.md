@@ -1,4 +1,4 @@
-# BLACKDC IS CLOSED. I will not be updating the selfbot here anymore, It will all be private.
+# BlackDC is discontinued, donate if you want me to contiue
 
 ## INSTALLATION/WIKI
 Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **installations** and anything else! 

@@ -12,5 +12,5 @@ Head over to the [wiki](https://github.com/DrkTheDon/BlackDC/wiki) to find **ins
 *Logging in the terminal*
 
 
-## Info about BlackDC (Recent)
-***BlackDC*** will not be working from commands in terminal but in discord. The terminal is just for information and logging.
+## Info and WHY?
+***BlackDC*** will not be working from commands in terminal but in discord. The terminal is just for information and logging. I wanted to make BlackDC for the purpose of stealth. Others shouldnt be able to see what options there are of the selfbot like the traditional selfbots do. Mine logs everything in the terminal instead of the chat in a discord server.

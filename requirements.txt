@@ -2,4 +2,4 @@ colorama==0.4.3
 discord.py==1.7.3
 numpy==1.22.2
 pystyle==1.7
-requests==2.22.0
+requests==2.31.0
